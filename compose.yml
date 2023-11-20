@@ -1,0 +1,14 @@
+version: "3.9"
+services:
+  no-mmu:
+    build:
+      context: container
+      dockerfile: ../container/Containerfile
+    working_dir: /mnt/no-mmu/workdir
+    volumes:
+      - type: bind
+        source: "${WORKDIR:-./}"
+        target: /mnt/no-mmu
+      - type: bind
+        source: "${WORKDIR:-./root}"
+        target: /root
